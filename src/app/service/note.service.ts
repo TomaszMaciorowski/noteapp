@@ -59,6 +59,11 @@ export class NoteService {
       );
 
 
+  public test() {
+
+    
+  }    
+
   private handleError(error: HttpErrorResponse): Observable<never> {
     console.log(error);
     let errorMessage: string;
