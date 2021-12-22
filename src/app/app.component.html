@@ -1,2 +1,58 @@
 <div>{{ appState$ | async | json }} </div>
-Test
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<div class="page-content container note-has-grid">
+ 
+    <div class="tab-content bg-transparent">
+        <div id="note-full-container" class="note-has-grid row">
+            <ng-container *ngIf="(appState$ | async) as result" [ngSwitch]="result.dataState">
+                     
+            <ng-container *ngSwitchCase="DataState.LOADING">
+                <div  class="col-md-12 single-note-item text-center">
+                    <div class="spinner-border text-info" role="status"></div>
+                </div>
+            </ng-container>
+
+            <ng-container *ngSwitchCase="DataState.ERROR">
+                <div class="alert-danger">
+                    {{ result.error }}
+                  </div>
+            </ng-container>
+
+
+       
+                
+            <ng-container *ngSwitchCase="DataState.LOADED" >
+                <div  class="col-md-4 single-note-item" >
+                    <div class="card card-body">
+                        <span class="side-stick"></span>
+                        <h5 class="note-title text-truncate w-75 mb-0">
+                         Co mam zrobić  <i class="point fa fa-circle ml-1 font-10"></i></h5>
+                        <p class="note-date font-12 text-muted">Since </p>
+                        <div class="note-content">
+                            <p class="note-inner-content text-muted">
+                              BLA BLA
+                            </p>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <span  class="mr-1 pointer">
+                              <i class="fa fa-trash remove-note">
+                              </i></span>
+                            <div class="ml-auto">
+                                <div class="category-selector btn-group">
+                                    <a  class="pointer nav-link label-group p-0" role="button" aria-haspopup="true" aria-expanded="true">
+                                      <span class="mr-1"><i class="fa fa-edit remove-note"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>           
+              </ng-container>
+            </ng-container>
+        </div>   
+    </div>   
+   
+</div>

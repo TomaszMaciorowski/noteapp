@@ -5,6 +5,7 @@ import { DataState } from './enum/datastate';
 import { CustomHttpResponse } from './interface/custom-http-response';
 import { AppState } from './interface/appstate';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
+import { Level } from './enum/level';
 
 @Component({
   selector: 'app-root',
@@ -13,10 +14,21 @@ import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 })
 export class AppComponent implements OnInit {
 
-  appState$!: Observable<AppState<CustomHttpResponse>>;
+  appState$!: Observable<AppState<CustomHttpResponse>> | undefined;
+  readonly level = Level;
+  readonly DataState = DataState;
+  filteredLevel$ = null;
+
 
   constructor(private noteService: NoteService) {  }
 
+filterNotes(level: Level.ALL){
+
+
+}
+  test(){
+
+  }
 
   ngOnInit(): void { 
 
